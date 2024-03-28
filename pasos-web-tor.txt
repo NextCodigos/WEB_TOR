@@ -1,0 +1,84 @@
+❯ mkdir webtor
+❯ cd webtor
+Indroduzco index.html y css
+
+Como root creo servidor python:
+python3 -m http.server 80
+
+Entro en navegador en localhost y veo web.
+
+instalo tor:
+apt update -y && apt install tor
+
+Inicio tor
+systemctl start tor
+
+Veo si esta activo:
+systemctl status tor
+
+Entramos en archivo:
+cd /etc/tor
+En archivo  torrc descomento estas dos lineas:
+#HiddenServiceDir /var/lib/tor/hidden_service/
+#HiddenServicePort 80 127.0.0.1:80
+Reiniciamos tor:
+systemctl restart tor
+
+Inicio tor y la pagina web esta en la deep wep,
+no me va en linux mint
+
+Entro en home a root y veo direccion de la web en tor:
+ cat /var/lib/tor/hidden_service/hostname
+
+───────┬────────────────────────────────────────────────────────────────────────
+       │ File: /var/lib/tor/hidden_service/hostname
+───────┼────────────────────────────────────────────────────────────────────────
+   1   │ z4z2try4azsx4aqjqs4a3frwwvtropqxbyv3ym2aa2jsofr7ktl73uad.onion
+
+  ╱  /home/next  
+
+Pongo esta url y veo en tor(me falla linux mint)
+
+
+///////////////////////////////////
+
+con markdown
+
+# Guía para crear una página web en la Deep Web con Linux Mint
+
+## Pasos
+
+### 1. Preparación
+
+* Crea un directorio para tu página web: `mkdir webtor`
+* Introduce tu contenido web, como `index.html` y archivos CSS.
+* Como usuario root, crea un servidor Python simple: `python3 -m http.server 80`
+* Verifica que la página web se muestra correctamente en tu navegador local (localhost).
+
+### 2. Instalación y configuración de Tor
+
+* Actualiza e instala Tor: `apt update -y && apt install tor`
+* Inicia el servicio Tor: `systemctl start tor`
+* Verifica el estado del servicio: `systemctl status tor`
+* Edita el archivo de configuración de Tor (`/etc/tor/torrc`):
+    * Descomenta las siguientes líneas:
+        * `#HiddenServiceDir /var/lib/tor/hidden_service/`
+        * `#HiddenServicePort 80 127.0.0.1:80`
+* Reinicia el servicio Tor: `systemctl restart tor`
+
+### 3. Acceso a la página web en la Deep Web
+
+* La página web estará disponible en la red Tor con una dirección `.onion`.
+* Para obtener la dirección `.onion` de tu página web, ve a la carpeta `home` del usuario root y ejecuta: `cat /var/lib/tor/hidden_service/hostname`
+* Copia la dirección `.onion` y ábrela en el navegador Tor.
+
+### 4. Solución de problemas
+
+* Si la página web no se muestra correctamente en Tor, asegúrate de que:
+    * El servidor Python está funcionando correctamente.
+    * La configuración de Tor es correcta.
+    * Has copiado la dirección `.onion` correctamente.
+* Si experimentas dificultades específicas en Linux Mint, consulta la siguiente información:
+    * Asegúrate de tener la última versión de Tor instalada.
+    * Revisa los permisos de los archivos y directorios relacionados con Tor.
+    * Busca ayuda en foros o comunidades específicas de Linux Mint.
